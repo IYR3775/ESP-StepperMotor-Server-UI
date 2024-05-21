@@ -67,7 +67,7 @@ export class ApiService {
     }
 
     moveStepper(stepperId, steps, speed, accel, unit) {
-        const url = `${API_URL}/api/steppers/moveto?id=${stepperId}&value=${steps}&unit=${unit}&speed=${speed}&accel=${accel}&decel=${accel}`;
+        const url = `${API_URL}/api/steppers/position?id=${stepperId}&value=${steps}&unit=${unit}&speed=${speed}&accel=${accel}&decel=${accel}`;
         return axios.post(url).then(response => response.data);
     }
 
