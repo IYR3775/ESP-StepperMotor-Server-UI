@@ -5,7 +5,7 @@ import Setup from './views/Setup.vue'
 import Control from './views/Control.vue'
 // import About from './views/About.vue'
 import RestApiDoc from './views/RestApiDoc.vue'
-import storageHelper from 'storage-helper'
+// import storageHelper from 'storage-helper'
 
 Vue.use(Router)
 
@@ -26,19 +26,19 @@ const routes = [
         meta: {
             title: 'Motion control',
             description: 'on this page you can control all configured stepper motors',
-            requiresAuth: true
-        }
-    },
-    {
-        path: '/password',
-        name: 'password',
-        component: Control,
-        meta: {
-            title: 'Password',
-            description: 'Enter Password',
             // requiresAuth: true
         }
     },
+    // {
+    //     path: '/password',
+    //     name: 'password',
+    //     component: Control,
+    //     meta: {
+    //         title: 'Password',
+    //         description: 'Enter Password',
+    //         // requiresAuth: true
+    //     }
+    // },
     {
         path: '/setup',
         name: 'setup',
@@ -46,7 +46,7 @@ const routes = [
         meta: {
             title: 'Setup',
             description: 'on this page you can configure the ESP-StepperMotor-Server, register stepper motors and limit switches as well as other settings',
-            requiresAuth: true
+            // requiresAuth: true
         }
     },
     // {
@@ -79,11 +79,11 @@ router.beforeEach((to, from, next) => {
         document.getElementById("header-title-from-content").innerHTML = to.meta.title;
         document.getElementById("header-description-from-content").innerHTML = to.meta.description;
     }
-    if (to.meta.requiresAuth) {
-        if (!storageHelper.getItem('user-password')) next('/password')
-        else next();
-    }
-      next();
+    // if (to.meta.requiresAuth) {
+    //     if (!storageHelper.getItem('user-password')) next('/password')
+    //     else next();
+    // }
+    next();
 });
 
 export default router;
