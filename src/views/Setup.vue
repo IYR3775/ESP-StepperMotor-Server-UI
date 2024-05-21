@@ -200,8 +200,9 @@
                 class="form-control"
                 id="stepsPerMM"
                 v-model="stepperToAdd.stepsPerMM"
-                min="1"
-                max="1000000"
+                step="0.001"
+                min="1.000"
+                max="1000000.000"
               />
               <small
                 id="stepsPerMMHelp"
@@ -533,7 +534,7 @@ export default {
       stepperToAdd: {
         stepPin: -1,
         dirPin: -1,
-        stepPerMM: 100,
+        stepPerMM: 100.000,
         stepPerRev: 200,
         name: "",
         brakePin: 255,
@@ -833,7 +834,7 @@ export default {
       this.stepperToAdd.id = "";
       this.stepperToAdd.stepPin = -1;
       this.stepperToAdd.dirPin = -1;
-      this.stepperToAdd.stepsPerMM = 100;
+      this.stepperToAdd.stepsPerMM = 100.000;
       this.stepperToAdd.stepsPerRev = 200;
       this.stepperToAdd.microsteppingDivisor = 1;
       this.stepperToAdd.name = "";
