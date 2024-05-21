@@ -14,11 +14,11 @@
       </div>
       <div class="nav-wrapper">
         <ul class="nav flex-column">
-          <li class="nav-item" v-on:click="hideMenu">
+          <!-- <li class="nav-item" v-on:click="hideMenu">
             <router-link to="/" class="nav-link">
               <font-awesome-icon icon="tachometer-alt" />Home
             </router-link>
-          </li>
+          </li> -->
           <li class="nav-item" v-on:click="hideMenu">
             <router-link to="/control" class="nav-link">
               <font-awesome-icon icon="gamepad" />Control
@@ -29,11 +29,11 @@
               <font-awesome-icon icon="cogs" />Setup
             </router-link>
           </li>
-          <li class="nav-item" v-on:click="hideMenu">
+          <!-- <li class="nav-item" v-on:click="hideMenu">
             <router-link to="/about" class="nav-link">
               <font-awesome-icon icon="info-circle" />About
             </router-link>
-          </li>
+          </li> -->
         </ul>
         <b-button class="mt-3 m-2" variant="danger" v-on:click="triggerEmergencyStop()">
           <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;trigger Emergency Stop
@@ -50,7 +50,7 @@
         <!-- Main Navbar -->
         <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
           <div sytle="display:block;">
-            <div class="page-title pl-4 pt-2" id="header-title-from-content">ESP-StepperMotor-Server</div>
+            <div class="page-title pl-4 pt-2" id="header-title-from-content">Table Saw Control</div>
             <div
               id="header-description-from-content"
               class="small pl-4 pt-2 overflow-hidden d-none d-md-block"

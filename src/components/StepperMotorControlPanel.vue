@@ -48,7 +48,13 @@
         </b-button>
       </div>
       <div class="form-group row mb-1">
-        <label class="col-6 col-form-label col-form-label" for="speed">Speed in steps per second</label>
+        <label class="col-6 col-form-label col-form-label" for="distance">Move (mm)</label>
+        <div class="col-auto">
+          <input class="form-control" v-model="distance" type="number" id="distance" />
+        </div>
+      </div>
+      <div class="form-group row mb-1">
+        <label class="col-6 col-form-label col-form-label" for="speed">Speed</label>
         <div class="col-auto">
           <input class="form-control" v-model="stepperSpeed" type="number" id="speed" />
         </div>
@@ -57,12 +63,12 @@
         <label
           class="col-6 col-form-label col-form-label"
           for="acceleration"
-        >Acceleration/deceleration in steps per second</label>
+        >Acceleration</label>
         <div class="col-auto">
           <input class="form-control" v-model="acceleration" type="number" id="acceleration" />
         </div>
       </div>
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label class="col-6 col-form-label col-form-label" for="distance">Set Position</label>
         <div class="col-auto form-inline">
           <input class="form-control" v-model="distance" type="number" id="distance" />
@@ -72,7 +78,7 @@
             <option value="revs">revolutions</option>
           </select>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

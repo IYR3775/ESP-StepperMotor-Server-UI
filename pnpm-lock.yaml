@@ -32,6 +32,9 @@ importers:
       popper.js:
         specifier: 1.16.1
         version: 1.16.1
+      storage-helper:
+        specifier: ^1.4.1
+        version: 1.4.1
       toastr:
         specifier: ^2.1.4
         version: 2.1.4
@@ -2468,6 +2471,9 @@ packages:
   jquery@3.7.1:
     resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
 
+  js-cookie@2.2.1:
+    resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
+
   js-message@1.0.7:
     resolution: {integrity: sha512-efJLHhLjIyKRewNS9EGZ4UpI8NguuL6fKkhRxVuMmrGV2xN/0APGdQYwLFky5w9naebSZ0OwAGp0G6/2Cg90rA==}
     engines: {node: '>=0.6.0'}
@@ -3455,6 +3461,10 @@ packages:
   statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+
+  storage-helper@1.4.1:
+    resolution: {integrity: sha512-wz3jNIdhwC2QdFwpCQQKJlP1HGLF77Dr3t1PPu59S/5tv3TZygrDZDxLfNEDWTlVBNpQlpx3oXRpt2KfBpPTyA==}
+    deprecated: This package is no longer supported. use at your own risk.
 
   string-width@2.1.1:
     resolution: {integrity: sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw==}
@@ -6680,6 +6690,8 @@ snapshots:
 
   jquery@3.7.1: {}
 
+  js-cookie@2.2.1: {}
+
   js-message@1.0.7: {}
 
   js-tokens@4.0.0: {}
@@ -7646,6 +7658,10 @@ snapshots:
   statuses@1.5.0: {}
 
   statuses@2.0.1: {}
+
+  storage-helper@1.4.1:
+    dependencies:
+      js-cookie: 2.2.1
 
   string-width@2.1.1:
     dependencies:
