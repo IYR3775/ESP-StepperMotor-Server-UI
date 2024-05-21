@@ -32,19 +32,19 @@
       </div>
       <div class="row p-3">
         <b-button class="m-3" v-on:click="moveToHomeBegin()" disabled>
-          <font-awesome-icon icon="fast-backward"></font-awesome-icon>
+          <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home 0
         </b-button>
-        <b-button variant="success" class="m-3" v-on:click="moveBack">
+        <!-- <b-button variant="success" class="m-3" v-on:click="moveBack">
           <font-awesome-icon icon="backward"></font-awesome-icon>
-        </b-button>
+        </b-button> -->
         <b-button class="m-3" v-on:click="stop">
-          <font-awesome-icon icon="stop"></font-awesome-icon>
+          <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
         </b-button>
         <b-button variant="success" class="m-3" v-on:click="moveForward">
-          <font-awesome-icon icon="forward"></font-awesome-icon>
+          <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
         </b-button>
         <b-button class="m-3" v-on:click="moveToHomeEnd()" disabled>
-          <font-awesome-icon icon="fast-forward"></font-awesome-icon>
+          <font-awesome-icon icon="fast-forward"></font-awesome-icon>&nbsp;Home End
         </b-button>
       </div>
       <div class="form-group row mb-1">
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-6 col-form-label col-form-label" for="distance">Distance to travel</label>
+        <label class="col-6 col-form-label col-form-label" for="distance">Set Position</label>
         <div class="col-auto form-inline">
           <input class="form-control" v-model="distance" type="number" id="distance" />
           <select class="form-control ml-1" v-model="stepUnit">
@@ -89,9 +89,9 @@ export default {
   data: function () {
     return {
       stepperSpeed: 800,
-      distance: 500,
+      distance: 0,
       acceleration: 500,
-      stepUnit: "steps"
+      stepUnit: "mm"
     };
   },
   props: {
