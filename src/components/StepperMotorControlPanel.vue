@@ -31,19 +31,19 @@
         </div>
       </div>
       <div class="row p-3">
-        <b-button class="m-3" v-on:click="moveToHomeBegin()" disabled>
+        <b-button class="m-3" size="lg" v-on:click="moveToHomeBegin()" disabled>
           <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home 0
         </b-button>
         <!-- <b-button variant="success" class="m-3" v-on:click="moveBack">
           <font-awesome-icon icon="backward"></font-awesome-icon>
         </b-button> -->
-        <b-button class="m-3" v-on:click="stop">
+        <b-button class="m-3" size="lg" v-on:click="stop">
           <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
         </b-button>
-        <b-button variant="success" class="m-3" v-on:click="moveForward">
+        <b-button variant="success" size="lg" class="m-3" v-on:click="moveForward">
           <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
         </b-button>
-        <b-button class="m-3" v-on:click="moveToHomeEnd()" disabled>
+        <b-button class="m-3" size="lg" v-on:click="moveToHomeEnd()" disabled>
           <font-awesome-icon icon="fast-forward"></font-awesome-icon>&nbsp;Home End
         </b-button>
       </div>
