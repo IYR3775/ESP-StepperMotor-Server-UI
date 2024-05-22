@@ -8,66 +8,71 @@
           <img src="../assets/stepper.svg" style="width:70px;height:90px;" />
         </div>
         <div class="p-1 pl-3">
-          Name:
-          <br />ID:
-          <br />Position:
-          <br />Motion completed:
-          <br />Velocity:
+          Name: {{ stepperConfiguration.name }}
+          <br />ID: {{ stepperConfiguration.id }}
+          <br />Moving: {{ (stepperConfiguration.velocity.mm_s > 0 || stepperConfiguration.velocity.mm_s
+            < 0) ? "Yes" : "No" }} <br />Velocity: {{ stepperConfiguration.velocity.mm_s }} mm/sec
           <br />
+          {{ stepperConfiguration.position.steps }} steps
+          <br />
+          Position: <h1 class="display-3">
+            {{ stepperConfiguration.position.mm.toFixed(1) }}0 mm<!-- | {{stepperConfiguration.position.revs}} revs | -->
+          </h1>
         </div>
-        <div class="p-1">
-          <strong>{{stepperConfiguration.name}}</strong>
+        <!-- <div class="p-1">
+          
           <br />
-          {{stepperConfiguration.id}}
+          
           <br />
-          {{stepperConfiguration.position.mm}} mm | {{stepperConfiguration.position.revs}} revs |
-          {{stepperConfiguration.position.steps}} steps
-          <br />
-          {{stepperConfiguration.stopped}}
-          <br />
-          {{stepperConfiguration.velocity.rev_s}} revs/sec | {{stepperConfiguration.velocity.mm_s}} mm/sec |
-          {{stepperConfiguration.velocity.steps_s}} steps/sec
-          <br />
-        </div>
+         
+          <br /> -->
+        <!-- {{stepperConfiguration.velocity.rev_s}} revs/sec | --><!-- |
+          {{stepperConfiguration.velocity.steps_s}} steps/sec-->
+        <!-- <br />
+        </div> -->
       </div>
       <div class="row p-3">
-        <b-button class="m-3" size="lg" v-on:click="moveToHomeBegin()" disabled>
+        <b-button variant="primary" class="m-3" size="lg" v-on:click="moveToHomeBegin()">
           <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home 0
+        </b-button>
+        <b-button variant="primary" class="m-3" size="lg" v-on:click="moveToHomeEnd()">
+          <font-awesome-icon icon="fast-forward"></font-awesome-icon>&nbsp;Home End
         </b-button>
         <!-- <b-button variant="success" class="m-3" v-on:click="moveBack">
           <font-awesome-icon icon="backward"></font-awesome-icon>
         </b-button> -->
-        <b-button class="m-3" size="lg" v-on:click="stop">
+        <b-button variant="warning" class="m-3" size="lg" v-on:click="stop">
           <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
         </b-button>
         <b-button variant="success" size="lg" class="m-3" v-on:click="moveForward">
           <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
         </b-button>
-        <b-button class="m-3" size="lg" v-on:click="moveToHomeEnd()" disabled>
-          <font-awesome-icon icon="fast-forward"></font-awesome-icon>&nbsp;Home End
-        </b-button>
       </div>
       <div class="form-group row mb-1">
-        <label class="col-6 col-form-label col-form-label" for="distance">Move (mm)</label>
+        <label class="col-2 col-form-label col-form-label" for="distance">Move (mm)</label>
         <div class="col-auto">
-          <input class="form-control" v-model="distance" type="number" id="distance" />
+          <input class="form-control" autofocus v-model="distance" type="number" id="distance" />
+          <!-- <NumericInput type="number" placeholder="touch to input" v-model="distance" /> -->
+        </div>
+        <div class="col-3">
+          <v-numeric-keyboard :layout="keypad" @press="press" />
         </div>
       </div>
-      <div class="form-group row mb-1">
-        <label class="col-6 col-form-label col-form-label" for="speed">Speed</label>
+      <!-- <div class="form-group row mb-1">
+        <label class="col-2 col-form-label col-form-label" for="speed">Speed</label>
         <div class="col-auto">
           <input class="form-control" v-model="stepperSpeed" type="number" id="speed" />
         </div>
       </div>
       <div class="form-group row mb-1">
         <label
-          class="col-6 col-form-label col-form-label"
+          class="col-2 col-form-label col-form-label"
           for="acceleration"
         >Acceleration</label>
         <div class="col-auto">
           <input class="form-control" v-model="acceleration" type="number" id="acceleration" />
         </div>
-      </div>
+      </div> -->
       <!-- <div class="form-group row">
         <label class="col-6 col-form-label col-form-label" for="distance">Set Position</label>
         <div class="col-auto form-inline">
@@ -87,16 +92,72 @@
 /* eslint-disable no-console */
 import { ApiService } from "../services/ApiService";
 import { BButton } from "bootstrap-vue";
+import { NumericKeyboard, Keys } from 'numeric-keyboard'
 
 const apiService = new ApiService();
+const keypad = [
+  [
+    {
+      key: Keys.ONE
+    },
+    {
+      key: Keys.TWO
+    },
+    {
+      key: Keys.THREE
+    },
+    // {
+    //   key: Keys.DEL,
+    //   rowspan: 4,
+    // },
+  ],
+  [
+    {
+      key: Keys.FOUR
+    },
+    {
+      key: Keys.FIVE
+    },
+    {
+      key: Keys.SIX
+    },
+  ],
+  [
+    {
+      key: Keys.SEVEN
+    },
+    {
+      key: Keys.EIGHT
+    },
+    {
+      key: Keys.NINE
+    },
+    // {
+    //   key: Keys.ENTER,
+    //   rowspan: 2,
+    // },
+  ],
+  [
+    {
+      key: Keys.DOT
+    },
+    {
+      key: Keys.ZERO
+    },
+    {
+      key: Keys.DEL
+    },
+  ],
+];
 
 export default {
   name: "StepperMotorControlPanel",
   data: function () {
     return {
-      stepperSpeed: 800,
+      keypad,
+      stepperSpeed: 1000,
       distance: 0,
-      acceleration: 500,
+      acceleration: 800,
       stepUnit: "mm"
     };
   },
@@ -105,6 +166,7 @@ export default {
   },
   components: {
     BButton,
+    'v-numeric-keyboard': NumericKeyboard,
   },
   methods: {
     stop() {
@@ -141,8 +203,23 @@ export default {
           console.log(data);
         });
     },
-    moveToHomeEnd() {},
-    moveToHomeBegin() {},
+    moveToHomeEnd() { },
+    moveToHomeBegin() { },
+    press(key) {
+      if (key === Keys.DEL) {
+        const distanceString = this.distance.toString()
+        if (distanceString.length === 1) {
+          this.distance = 0
+        } else { this.distance = parseFloat(distanceString.slice(0, -1)) }
+      }
+      else {
+        if (this.distance === 0 && key === Keys.DOT) {
+          this.distance = parseFloat(key)
+        }
+        this.distance = parseFloat(this.distance + key)
+      }
+      console.log(this.distance);
+    }
   },
 };
 </script>

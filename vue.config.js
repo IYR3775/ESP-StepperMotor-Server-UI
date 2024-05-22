@@ -21,6 +21,17 @@ module.exports = {
             })
         ]
     },
+    chainWebpack: config => {
+        config.resolve
+            .alias
+            .set('numeric-keyboard$', 'numeric-keyboard/dist/numeric_keyboard.vue.js')
+        // fix error above by excluding node_modules
+        config.module
+            .rule('js')
+            .exclude
+            .add(/node_modules/)
+            .end()
+    },
     css: {
         extract: false,
     },

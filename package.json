@@ -16,6 +16,7 @@
         "bootstrap": "^4.5.0",
         "bootstrap-vue": "^2.14.0",
         "core-js": "^3.6.5",
+        "numeric-keyboard": "^0.7.0",
         "popper.js": "1.16.1",
         "storage-helper": "^1.4.1",
         "toastr": "^2.1.4",
