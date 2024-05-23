@@ -7,7 +7,7 @@
         <!-- <div class="d-none d-sm-inline-block align-self-center p-1">
           <img src="../assets/stepper.svg" style="width:70px;height:90px;" />
         </div> -->
-        <div class="col-4 p-1 pl-3">
+        <div class="col-5 p-1 pl-3">
           Name: {{ stepperConfiguration.name }}
           <br />ID: {{ stepperConfiguration.id }}
           <br />Moving: {{ (stepperConfiguration.velocity.mm_s > 0 || stepperConfiguration.velocity.mm_s
@@ -26,7 +26,7 @@
             mm<!-- | {{stepperConfiguration.position.revs}} revs | -->
           </h1>
         </div>
-        <div class="col-8 p-3">
+        <div class="col-6 p-2">
           <div class="col-auto">
             Move (mm) <br />
             <div class="display-4">
@@ -34,44 +34,44 @@
             </div>
           </div>
           <div class="row btn-group-lg btn-group-vertical">
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('1')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('1')"><span
                 style="font-size:2em;">1</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('4')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('4')"><span
                 style="font-size:2em;">4</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('7')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('7')"><span
                 style="font-size:2em;">7</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('.')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('.')"><span
                 style="font-size:2em;">.</span>
             </b-button>
           </div>
           <div class="row p-5 btn-group-lg btn-group-vertical">
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('2')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('2')"><span
                 style="font-size:2em;">2</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('5')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('5')"><span
                 style="font-size:2em;">5</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('8')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('8')"><span
                 style="font-size:2em;">8</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('0')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('0')"><span
                 style="font-size:2em;">0</span>
             </b-button>
           </div>
           <div class="row p-6 btn-group-lg btn-group-vertical">
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('3')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('3')"><span
                 style="font-size:2em;">3</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('6')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('6')"><span
                 style="font-size:2em;">6</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('9')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('9')"><span
                 style="font-size:2em;">9</span>
             </b-button>
-            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('C')"><span
+            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('C')"><span
                 style="font-size:2em;">C</span>
             </b-button>
           </div>
@@ -91,6 +91,9 @@
             <b-button pill variant="success" size="lg" class="m-3" v-on:click="moveForward">
               <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
             </b-button>
+            <b-button pill variant="danger" class="m-3" size="lg" v-on:click="clearDistance()">
+            <font-awesome-icon icon="trash"></font-awesome-icon>&nbsp;CLEAR
+          </b-button>
           </div>
         </div>
       </div>
@@ -241,6 +244,9 @@ export default {
     },
     moveToHomeEnd() { },
     moveToHomeBegin() { },
+    clearDistance() {
+      return this.distance = "0";
+    },
     press(key) {
       switch (key) {
         case "C":
@@ -262,7 +268,7 @@ export default {
           break;
 
         case ".":
-          if (this.distance.length === 1) {
+          if (!this.distance.length) {
             this.distance = "0";
           } else if (!this.distance.includes(".")) {
             this.distance = this.distance + key;
@@ -274,6 +280,9 @@ export default {
           if (this.distance === "0") {
             this.distance = key;
           } else {
+            if(this.distance.length === 6) {
+              this.distance = key;
+            } else
             this.distance = this.distance + key;
           }
           break;
