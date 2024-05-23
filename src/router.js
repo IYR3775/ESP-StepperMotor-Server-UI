@@ -20,12 +20,12 @@ const routes = [
     //     }
     // },
     {
-        path: '/control',
+        path: '/',
         name: 'control',
         component: Control,
         meta: {
-            title: 'Motion control',
-            description: 'on this page you can control all configured stepper motors',
+            title: 'Table Saw Control',
+            description: '',
             // requiresAuth: true
         }
     },

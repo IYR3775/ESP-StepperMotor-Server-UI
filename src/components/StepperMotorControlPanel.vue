@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 <template>
-  <div class="stepperControlPanel card card-small mt-3">
+  <div class="stepperControlPanel mt-3">
     <slot></slot>
     <div class="card-body p-3">
       <div class="d-flex flex-row">

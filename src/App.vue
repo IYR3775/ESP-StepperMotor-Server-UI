@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="row">
     <!-- Main Sidebar -->
-    <aside class="main-sidebar col-10 col-md-3 col-lg-2 px-0" v-bind:class="{ open: this.isOpen }">
+    <aside class="main-sidebar col-10 col-md-3 col-lg-1 px-0" v-bind:class="{ open: this.isOpen }">
       <div class="main-navbar">
         <nav
           class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0 logo-bg"
@@ -20,13 +20,13 @@
             </router-link>
           </li> -->
           <li class="nav-item" v-on:click="hideMenu">
-            <router-link to="/control" class="nav-link">
-              <font-awesome-icon icon="gamepad" />Control
+            <router-link to="/" class="nav-link">
+              <font-awesome-icon icon="gamepad" />
             </router-link>
           </li>
           <li class="nav-item" v-on:click="hideMenu">
             <router-link to="/setup" class="nav-link">
-              <font-awesome-icon icon="cogs" />Setup
+              <font-awesome-icon icon="cogs" />
             </router-link>
           </li>
           <!-- <li class="nav-item" v-on:click="hideMenu">
@@ -35,22 +35,22 @@
             </router-link>
           </li> -->
         </ul>
-        <b-button class="mt-3 m-2" variant="danger" v-on:click="triggerEmergencyStop()">
-          <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;trigger Emergency Stop
+        <b-button pill class="mt-5 m-3" size="lg" variant="danger" v-on:click="triggerEmergencyStop()">
+          <font-awesome-icon icon="stop"></font-awesome-icon>
         </b-button>
 
-        <b-button class="m-2" variant="primary" v-on:click="revokeEmergencyStop()">
-          <font-awesome-icon icon="play"></font-awesome-icon>&nbsp;Release Emergency Stop
+        <b-button pill class="m-3" size="lg" variant="primary" v-on:click="revokeEmergencyStop()">
+          <font-awesome-icon icon="play"></font-awesome-icon>
         </b-button>
       </div>
     </aside>
     <!-- End Main Sidebar -->
-    <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+    <main class="main-content col-lg-11 col-md-9 col-sm-12 p-0 offset-lg-1 offset-md-3">
       <div class="main-navbar sticky-top bg-white">
         <!-- Main Navbar -->
         <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
           <div sytle="display:block;">
-            <div class="page-title pl-4 pt-2" id="header-title-from-content">Table Saw Control</div>
+            <div class="h4 pl-4 pt-2" id="header-title-from-content">Table Saw Control</div>
             <div
               id="header-description-from-content"
               class="small pl-4 pt-2 overflow-hidden d-none d-md-block"
@@ -174,7 +174,7 @@ export default {
               this.isOnline = true;
               this.onlineSatusText = "connected";
               this.$toastr.success(
-                "Connected to ESP-StepperMotor-Server",
+                "Connected to TableSaw-Server",
                 "Connection established",
                 { timeOut: 1500 }
               );
@@ -195,7 +195,7 @@ export default {
             this.serverVersion = "N/A";
             this.onlineSatusText = "disconnected";
             this.$toastr.error(
-              "Failed to connect to ESP-StepperMotor-Server",
+              "Failed to connect to TableSaw-Server",
               "Not connected",
               {}
             );
