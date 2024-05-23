@@ -280,7 +280,7 @@ export default {
           if (this.distance === "0") {
             this.distance = key;
           } else {
-            if(this.distance.length === 6) {
+            if(this.distance.length === 6 || (!this.distance.includes(".") && this.distance.length === 3)) {
               this.distance = key;
             } else
             this.distance = this.distance + key;
