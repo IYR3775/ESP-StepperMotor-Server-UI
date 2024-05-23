@@ -4,9 +4,9 @@
     <slot></slot>
     <div class="card-body p-3">
       <div class="d-flex flex-row">
-        <div class="d-none d-sm-inline-block align-self-center p-1">
+        <!-- <div class="d-none d-sm-inline-block align-self-center p-1">
           <img src="../assets/stepper.svg" style="width:70px;height:90px;" />
-        </div>
+        </div> -->
         <div class="col-4 p-1 pl-3">
           Name: {{ stepperConfiguration.name }}
           <br />ID: {{ stepperConfiguration.id }}
@@ -15,48 +15,84 @@
           <br />
           {{ stepperConfiguration.position.steps }} steps
           <br />
+          <br />
+          <b-button variant="info" class="m-0" size="lg" v-on:click="moveToHomeBegin()">
+            <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home
+          </b-button>
+          <br />
+          <br />
           Position: <h1 class="display-3">
-            {{ stepperConfiguration.position.mm.toFixed(1) }}0
+            {{ parseFloat(stepperConfiguration.position.mm).toFixed(1) }}0
             mm<!-- | {{stepperConfiguration.position.revs}} revs | -->
           </h1>
         </div>
-        <div class="col-3 p-1">
+        <div class="col-8 p-2">
           <div class="col-auto">
             Move (mm) <br />
-            <input class="form-control" autofocus v-model="distance" type="number" id="distance" />
+            <div class="display-4">
+              {{ distance }}
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row p-5 btn-group-lg btn-group-vertical">
-        <b-button pill variant="primary" class="m-3" size="lg" v-on:click="moveToHomeBegin()">
-          <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Zero
-        </b-button>
-        <b-button pill variant="primary" class="m-3" size="lg" v-on:click="moveToHomeEnd()">
-          <font-awesome-icon icon="fast-forward"></font-awesome-icon>&nbsp;900
-        </b-button>
-        <!-- <b-button variant="warning" class="m-3" size="lg" v-on:click="stop">
-          <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
-        </b-button>
-        <b-button variant="success" size="lg" class="m-3" v-on:click="moveForward">
-          <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
-        </b-button> -->
-      </div>
-      <div class="row p-3 btn-group-lg btn-group-vertical">
-        <!-- <b-button variant="primary" class="m-3" size="lg" v-on:click="moveToHomeBegin()">
+          <div class="row btn-group-lg btn-group-vertical">
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('1')"><span
+                style="font-size:2em;">1</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('4')"><span
+                style="font-size:2em;">4</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('7')"><span
+                style="font-size:2em;">7</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('.')"><span
+                style="font-size:2em;">.</span>
+            </b-button>
+          </div>
+          <div class="row p-5 btn-group-lg btn-group-vertical">
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('2')"><span
+                style="font-size:2em;">2</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('5')"><span
+                style="font-size:2em;">5</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('8')"><span
+                style="font-size:2em;">8</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('0')"><span
+                style="font-size:2em;">0</span>
+            </b-button>
+          </div>
+          <div class="row p-6 btn-group-lg btn-group-vertical">
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('3')"><span
+                style="font-size:2em;">3</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('6')"><span
+                style="font-size:2em;">6</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('9')"><span
+                style="font-size:2em;">9</span>
+            </b-button>
+            <b-button pill variant="primary" class="m-1" size="lg" v-on:click="press('C')"><span
+                style="font-size:2em;">C</span>
+            </b-button>
+          </div>
+          <div class="row p-5 btn-group-lg btn-group-vertical">
+            <!-- <b-button variant="primary" class="m-3" size="lg" v-on:click="moveToHomeBegin()">
           <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home 0
         </b-button>
         <b-button variant="primary" class="m-3" size="lg" v-on:click="moveToHomeEnd()">
           <font-awesome-icon icon="fast-forward"></font-awesome-icon>&nbsp;Home End
         </b-button> -->
-        <!-- <b-button variant="success" class="m-3" v-on:click="moveBack">
+            <!-- <b-button variant="success" class="m-3" v-on:click="moveBack">
           <font-awesome-icon icon="backward"></font-awesome-icon>
         </b-button> -->
-        <b-button pill variant="warning" class="m-3" size="lg" v-on:click="stop">
-          <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
-        </b-button>
-        <b-button pill variant="success" size="lg" class="m-3" v-on:click="moveForward">
-          <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
-        </b-button>
+            <b-button pill variant="warning" class="m-3" size="lg" v-on:click="stop">
+              <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
+            </b-button>
+            <b-button pill variant="success" size="lg" class="m-3" v-on:click="moveForward">
+              <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
+            </b-button>
+          </div>
+        </div>
       </div>
       <!-- <div class="form-group row mb-1">
         <label class="col-2 col-form-label col-form-label" for="speed">Speed</label>
@@ -156,7 +192,7 @@ export default {
     return {
       // keypad,
       stepperSpeed: 1000,
-      distance: 0,
+      distance: "0",
       acceleration: 800,
       stepUnit: "mm"
     };
@@ -205,21 +241,66 @@ export default {
     },
     moveToHomeEnd() { },
     moveToHomeBegin() { },
-    // press(key) {
-    //   if (key === Keys.DEL) {
-    //     const distanceString = this.distance.toString()
-    //     if (distanceString.length === 1) {
-    //       this.distance = 0
-    //     } else { this.distance = parseFloat(distanceString.slice(0, -1)) }
-    //   }
-    //   else {
-    //     if (this.distance === 0 && key === Keys.DOT) {
-    //       this.distance = parseFloat(key)
-    //     }
-    //     this.distance = parseFloat(this.distance + key)
-    //   }
-    //   console.log(this.distance);
-    // }
+    press(key) {
+      switch (key) {
+        case "C":
+          if (this.distance.length === 1) {
+            this.distance = "0";
+          } else {
+            this.distance = this.distance.slice(0, -1);
+          }
+
+          break;
+
+        case "0":
+          if (this.distance === "0") {
+            this.distance = "0";
+          } else {
+            this.distance = this.distance + key;
+          }
+
+          break;
+
+        case ".":
+          if (this.distance.length === 1) {
+            this.distance = "0";
+          } else if (!this.distance.includes(".")) {
+            this.distance = this.distance + key;
+          }
+
+          break;
+
+        default:
+          if (this.distance === "0") {
+            this.distance = key;
+          } else {
+            this.distance = this.distance + key;
+          }
+          break;
+      }
+      // console.log(this.distance.length)
+      // console.log(key)
+      // if (this.distance.length === 1 && key === "0" || this.distance.length === 1 && key === "C") {
+      //   console.log("here")
+      //   this.distance = "0";
+      // } else {
+      //   this.distance = this.distance + key;
+      // }
+      // if (key === 'C') {
+      //   console.log("here")
+      //   // const distanceString = this.distance.toString()
+      //   if (this.distance.length === 1) {
+      //     this.distance = "0";
+      //   } else {
+      //     console.log("here2")
+      //     this.distance = this.distance.slice(0, -1);
+      //   }
+      // }
+      // else if (this.distance === "0" && key === "0") {
+      //   this.distance = "0";
+      // }
+      console.log(this.distance);
+    }
   },
 };
 </script>
