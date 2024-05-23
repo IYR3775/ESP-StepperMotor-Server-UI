@@ -29,9 +29,6 @@ importers:
       core-js:
         specifier: ^3.6.5
         version: 3.37.1
-      numeric-keyboard:
-        specifier: ^0.7.0
-        version: 0.7.0
       popper.js:
         specifier: 1.16.1
         version: 1.16.1
@@ -2791,9 +2788,6 @@ packages:
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
-
-  numeric-keyboard@0.7.0:
-    resolution: {integrity: sha512-V4xdt0yu8JT6pbMlnBE3MU9yWui3HitaeSD+32/F8iz5sPdeuyzYgvBFFmrwAh7a4VFVO/OOSuyVMLEuR6nu6Q==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -6962,8 +6956,6 @@ snapshots:
   nth-check@2.1.1:
     dependencies:
       boolbase: 1.0.0
-
-  numeric-keyboard@0.7.0: {}
 
   object-assign@4.1.1: {}
 
