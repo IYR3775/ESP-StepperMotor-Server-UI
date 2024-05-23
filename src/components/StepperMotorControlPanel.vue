@@ -16,20 +16,20 @@
           {{ stepperConfiguration.position.steps }} steps
           <br />
           <br />
-          <b-button variant="info" class="m-0" size="lg" v-on:click="moveToHomeBegin()">
+          <b-button pill variant="info" class="m-0 text-dark" size="lg" v-on:click="moveToHomeBegin()">
             <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home
           </b-button>
           <br />
           <br />
-          Position: <h1 class="display-3">
+          Position: <h1 class="display-3 text-success font-weight-bold">
             {{ parseFloat(stepperConfiguration.position.mm).toFixed(1) }}0
             mm<!-- | {{stepperConfiguration.position.revs}} revs | -->
           </h1>
         </div>
         <div class="col-6 p-2">
-          <div class="col-auto">
+          <div class="col-auto pl-0 p-0 m-0">
             Move (mm) <br />
-            <div class="display-4">
+            <div class="display-3 text-primary col-6">
               {{ distance }}
             </div>
           </div>
@@ -88,12 +88,12 @@
             <b-button pill variant="warning" class="m-3" size="lg" v-on:click="stop">
               <font-awesome-icon icon="stop"></font-awesome-icon>&nbsp;STOP
             </b-button>
-            <b-button pill variant="success" size="lg" class="m-3" v-on:click="moveForward">
+            <b-button pill variant="success" size="lg" class="m-3 text-dark" v-on:click="moveForward">
               <font-awesome-icon icon="forward"></font-awesome-icon>&nbsp;Move
             </b-button>
             <b-button pill variant="danger" class="m-3" size="lg" v-on:click="clearDistance()">
-            <font-awesome-icon icon="trash"></font-awesome-icon>&nbsp;CLEAR
-          </b-button>
+              <font-awesome-icon icon="trash"></font-awesome-icon>&nbsp;CLEAR
+            </b-button>
           </div>
         </div>
       </div>
@@ -262,7 +262,10 @@ export default {
           if (this.distance === "0") {
             this.distance = "0";
           } else {
-            this.distance = this.distance + key;
+            if (this.distance.length === 6 || (!this.distance.includes(".") && this.distance.length === 3)) {
+              this.distance = key;
+            } else
+              this.distance = this.distance + key;
           }
 
           break;
@@ -280,10 +283,10 @@ export default {
           if (this.distance === "0") {
             this.distance = key;
           } else {
-            if(this.distance.length === 6 || (!this.distance.includes(".") && this.distance.length === 3)) {
+            if (this.distance.length === 6 || (!this.distance.includes(".") && this.distance.length === 3)) {
               this.distance = key;
             } else
-            this.distance = this.distance + key;
+              this.distance = this.distance + key;
           }
           break;
       }
