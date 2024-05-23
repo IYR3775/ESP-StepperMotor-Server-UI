@@ -1,5 +1,5 @@
 {
-    "name": "esp-steppermotor-server-ui",
+    "name": "table-saw-control",
     "version": "0.4.2",
     "private": true,
     "scripts": {
