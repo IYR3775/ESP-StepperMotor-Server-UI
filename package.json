@@ -1,62 +1,60 @@
 {
-  "name": "table-saw-control",
-  "version": "0.4.2",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && npm run prepareExampleDistPackageForESP",
-    "lint": "vue-cli-service lint",
-    "prepareExampleDistPackageForESP": "rm -rf data && mkdir data && cp -R dist/* data/ && rm -rf data/js/*.js && rm -rf data/js/*.map* && sed 's/app\\.js/app\\.js\\.gz/g' data/index.html > data/index2.html && sed \"s/#VERSION#/$npm_package_version/g\" data/index2.html > data/index.html && rm data/index2.html && gzip -k ./public/upload.html && mv ./public/upload.html.gz ./data/ && rm ./data/upload.html"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/vue-fontawesome": "^0.1.9",
-    "axios": "^0.21.2",
-    "bootstrap": "^4.5.0",
-    "bootstrap-vue": "^2.14.0",
-    "core-js": "^3.6.5",
-    "popper.js": "1.16.1",
-    "register-service-worker": "^1.7.2",
-    "storage-helper": "^1.4.1",
-    "toastr": "^2.1.4",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vue-toastr-2": "0.0.10"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-plugin-pwa": "~5.0.0",
-    "@vue/cli-service": "^5.0.8",
-    "babel-eslint": "^10.1.0",
-    "compression-webpack-plugin": "^10.0.0",
-    "eslint": "^7.5.0",
-    "eslint-plugin-vue": "^9.3.0",
-    "vue-template-compiler": "^2.7.8"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
+    "name": "table-saw-control",
+    "version": "0.4.2",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build && npm run prepareExampleDistPackageForESP",
+        "lint": "vue-cli-service lint",
+        "prepareExampleDistPackageForESP": "rm -rf data && mkdir data && cp -R dist/* data/ && rm -rf data/js/*.js && rm -rf data/js/*.map* && sed 's/app\\.js/app\\.js\\.gz/g' data/index.html > data/index2.html && sed \"s/#VERSION#/$npm_package_version/g\" data/index2.html > data/index.html && rm data/index2.html && gzip -k ./public/upload.html && mv ./public/upload.html.gz ./data/ && rm ./data/upload.html"
     },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.28",
+        "@fortawesome/free-solid-svg-icons": "^5.13.0",
+        "@fortawesome/vue-fontawesome": "^0.1.9",
+        "axios": "^0.21.2",
+        "bootstrap": "^4.5.0",
+        "bootstrap-vue": "^2.14.0",
+        "core-js": "^3.6.5",
+        "popper.js": "1.16.1",
+        "storage-helper": "^1.4.1",
+        "toastr": "^2.1.4",
+        "vue": "^2.6.11",
+        "vue-router": "^3.2.0",
+        "vue-toastr-2": "0.0.10"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^5.0.8",
+        "@vue/cli-plugin-eslint": "^5.0.8",
+        "@vue/cli-service": "^5.0.8",
+        "babel-eslint": "^10.1.0",
+        "compression-webpack-plugin": "^10.0.0",
+        "eslint": "^7.5.0",
+        "eslint-plugin-vue": "^9.3.0",
+        "vue-template-compiler": "^2.7.8"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {},
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
 }
