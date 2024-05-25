@@ -9,75 +9,75 @@
         </div> -->
         <div class="col-5 p-1 pl-3">
           <h3 class="font-weight-bold">
-          <!-- Name: {{ stepperConfiguration.name }}
+            <!-- Name: {{ stepperConfiguration.name }}
           <br />ID: {{ stepperConfiguration.id }} -->
-          <br />Moving: {{ (stepperConfiguration.velocity.mm_s > 0 || stepperConfiguration.velocity.mm_s
-            < 0) ? "Yes" : "No" }} <br />Velocity: {{ stepperConfiguration.velocity.mm_s }} mm/sec
-          <br />
-          {{ stepperConfiguration.position.steps }} steps
-          <br />
-          <br />
-          <b-button pill variant="primary" class="m-0 font-weight-bold" size="lg" v-on:click="moveToHomeBegin()">
-            <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home
-          </b-button>
-          <br />
-          <br />
-          Position: <h1 class="display-3 text-success font-weight-bold">
-            {{ parseFloat(stepperConfiguration.position.mm).toFixed(1) }}0
-            mm<!-- | {{stepperConfiguration.position.revs}} revs | -->
-          </h1>
-        </h3>
+            <br />Moving: {{ (stepperConfiguration.velocity.mm_s > 0 || stepperConfiguration.velocity.mm_s
+              < 0) ? "Yes" : "No" }} <br />Velocity: {{ stepperConfiguration.velocity.mm_s }} mm/sec
+            <br />
+            {{ stepperConfiguration.position.steps }} steps
+            <br />
+            <br />
+            <b-button pill variant="primary" class="m-0 font-weight-bold" size="lg" v-on:click="moveToHomeBegin()">
+              <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home
+            </b-button>
+            <br />
+            <br />
+            Current Position: <h1 class="display-3 text-success font-weight-bold">
+              {{ parseFloat(stepperConfiguration.position.mm).toFixed(1) }}0
+              mm<!-- | {{stepperConfiguration.position.revs}} revs | -->
+            </h1>
+          </h3>
         </div>
         <div class="col-7 p-2">
           <div class="col-auto pl-0 p-0 m-0 font-weight-bold blockquote">
-            Move (mm) <br />
+             Set Position (mm) <br />
             <div class="display-3 text-primary font-weight-bold col-7">
               {{ distance }}
             </div>
           </div>
-          <div class="row btn-group-lg btn-group-vertical">
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('1')"><span
+          <div class="row mr-1 btn-group-lg btn-group-vertical col-2">
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('1')"><span
                 style="font-size:2em;">1</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('4')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('4')"><span
                 style="font-size:2em;">4</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('7')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('7')"><span
                 style="font-size:2em;">7</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('.')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('.')"><span
                 style="font-size:2em;">.</span>
             </b-button>
           </div>
-          <div class="row p-5 btn-group-lg btn-group-vertical">
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('2')"><span
+          <div class="row btn-group-lg btn-group-vertical col-2">
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('2')"><span
                 style="font-size:2em;">2</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('5')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('5')"><span
                 style="font-size:2em;">5</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('8')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('8')"><span
                 style="font-size:2em;">8</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('0')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('0')"><span
                 style="font-size:2em;">0</span>
             </b-button>
           </div>
-          <div class="row p-6 btn-group-lg btn-group-vertical">
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('3')"><span
+          <div class="row ml-1 btn-group-lg btn-group-vertical col-2">
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('3')"><span
                 style="font-size:2em;">3</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('6')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('6')"><span
                 style="font-size:2em;">6</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('9')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('9')"><span
                 style="font-size:2em;">9</span>
             </b-button>
-            <b-button pill variant="secondary" class="m-1" size="lg" v-on:click="press('C')"><span
+            <b-button pill variant="secondary" class="m-2" size="lg" v-on:click="press('C')"><span
                 style="font-size:2em;">C</span>
             </b-button>
           </div>
-          <div class="row p-5 btn-group-lg btn-group-vertical">
+          <div class="row ml-5 btn-group-lg btn-group-vertical">
             <!-- <b-button variant="primary" class="m-3" size="lg" v-on:click="moveToHomeBegin()">
           <font-awesome-icon icon="fast-backward"></font-awesome-icon>&nbsp;Home 0
         </b-button>
