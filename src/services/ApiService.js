@@ -76,6 +76,15 @@ export class ApiService {
         return axios.get(url).then(response => response.data);
     }
 
+    // returnHome(stepperId, speed) {
+    //     const url = `${API_URL}/api/steppers/returnhome?id=${stepperId}&speed=${speed}`;
+    //     return axios.post(url).then(response => response.data).catch(e=> console.log(e));
+    // }
+    returnHome(stepperId, speed, accel, maxsteps, direction, switchId) {
+        const url = `${API_URL}/api/steppers/returnhome?id=${stepperId}&speed=${speed}&accel=${accel}&maxSteps=${maxsteps}&direction=${direction}&switchId=${switchId}`;
+        return axios.post(url).then(response => response.data);
+    }
+
     triggerEmergencyStop() {
         const url = `${API_URL}/api/emergencystop/trigger`;
         return axios.get(url).then(response => response.data);

@@ -20,8 +20,6 @@
                     <span v-if="stepperConfiguration.brakePin != 255">engage delay: {{(stepperConfiguration.brakeEngageDelayMs == 0)? 'disabled': stepperConfiguration.brakeEngageDelayMs + ' ms'}} / release delay: {{(stepperConfiguration.brakeReleaseDelayMs == -1)? 'disabled': stepperConfiguration.brakeReleaseDelayMs + ' ms'}}<br/></span>
                     Steps/mm: {{stepperConfiguration.stepsPerMM}} / Steps/revolution: {{stepperConfiguration.stepsPerRev}}<br/>
                     Microstepping: {{stepperConfiguration.microsteppingDivisor}}<br/>
-                    Speed: Placeholder<br/>
-                    Acceleration: Placeholder<br/>
 
                 </div>
                 <div class="hover-btn">
