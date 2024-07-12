@@ -198,9 +198,9 @@ export default {
   data: function () {
     return {
       // keypad,
-      stepperSpeed: 1000,
+      stepperSpeed: 500,
       distance: "0",
-      acceleration: 800,
+      acceleration: 500,
       stepUnit: "mm"
     };
   },
